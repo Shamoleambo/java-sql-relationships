@@ -5,6 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.tidz.relationships.dao.AppDAO;
+import com.tidz.relationships.entity.Instructor;
+import com.tidz.relationships.entity.InstructorDetail;
+
 @SpringBootApplication
 public class RelationshipsApplication {
 
@@ -13,10 +17,21 @@ public class RelationshipsApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLinerunner(String args[]) {
+	public CommandLineRunner commandLinerunner(AppDAO appDAO) {
 		return runner -> {
-			System.out.println("Hello World!");
+			createInstructor(appDAO);
 		};
 	}
 
+	private void createInstructor(AppDAO appDAO) {
+		Instructor tempInstructor = new Instructor("Mano", "Maneiro", "mano@mail.com");
+		InstructorDetail instructorDetail = new InstructorDetail("@myMainGoal", "read");
+
+		tempInstructor.setInstructorDetail(instructorDetail);
+		System.out.println("Saving instructor: " + tempInstructor);
+		appDAO.save(tempInstructor);
+
+		System.out.println("DONE!!!");
+
+	}
 }
