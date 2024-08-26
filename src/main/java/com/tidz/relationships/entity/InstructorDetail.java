@@ -13,6 +13,7 @@ public class InstructorDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	@Column(name = "youtube_channel")
 	private String youtubeChannel;
