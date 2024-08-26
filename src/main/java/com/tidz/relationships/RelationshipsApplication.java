@@ -24,8 +24,10 @@ public class RelationshipsApplication {
 	}
 
 	private void createInstructor(AppDAO appDAO) {
-		Instructor tempInstructor = new Instructor("Mano", "Maneiro", "mano@mail.com");
-		InstructorDetail instructorDetail = new InstructorDetail("@myMainGoal", "read");
+//		Instructor tempInstructor = new Instructor("Mano", "Maneiro", "mano@mail.com");
+//		InstructorDetail instructorDetail = new InstructorDetail("@myMainGoal", "read");
+		Instructor tempInstructor = new Instructor("Truta", "Dahora", "truta@mail.com");
+		InstructorDetail instructorDetail = new InstructorDetail("@myMainGoal", "play videogames");
 
 		tempInstructor.setInstructorDetail(instructorDetail);
 		System.out.println("Saving instructor: " + tempInstructor);
