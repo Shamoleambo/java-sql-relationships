@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.tidz.relationships.dao.AppDAO;
+import com.tidz.relationships.entity.Course;
 import com.tidz.relationships.entity.Instructor;
 import com.tidz.relationships.entity.InstructorDetail;
 
@@ -23,8 +24,42 @@ public class RelationshipsApplication {
 //			findInstructor(appDAO);
 //			deleteInstructor(appDAO);
 //			findInstructorDetail(appDAO);
-			deleteInstructorDetail(appDAO);
+//			deleteInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		Instructor tempInstructor1 = new Instructor("Mano", "Maneiro", "mano@mail.com");
+		InstructorDetail instructorDetail1 = new InstructorDetail("@myMainGoal", "read");
+		Course course1 = new Course("make fun advanced");
+		Course course4 = new Course("make stuff");
+
+		Instructor tempInstructor2 = new Instructor("Zinto", "Zaberino", "zz@mail.com");
+		InstructorDetail instructorDetail2 = new InstructorDetail("@theStudent", "study");
+		Course course2 = new Course("make fun 101");
+
+		Instructor tempInstructor3 = new Instructor("Truta", "Dahora", "truta@mail.com");
+		InstructorDetail instructorDetail3 = new InstructorDetail("@myMainGoal", "play videogames");
+		Course course3 = new Course("do not make 101");
+
+		tempInstructor1.setInstructorDetail(instructorDetail1);
+		tempInstructor1.add(course1);
+		tempInstructor1.add(course4);
+		System.out.println("Saving instructor: " + tempInstructor1);
+		appDAO.save(tempInstructor1);
+
+		tempInstructor2.setInstructorDetail(instructorDetail2);
+		tempInstructor2.add(course2);
+		System.out.println("Saving instructor: " + tempInstructor2);
+		appDAO.save(tempInstructor2);
+
+		tempInstructor3.setInstructorDetail(instructorDetail3);
+		tempInstructor3.add(course3);
+		System.out.println("Saving instructor: " + tempInstructor3);
+		appDAO.save(tempInstructor3);
+
+		System.out.println("DONE!!!");
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
