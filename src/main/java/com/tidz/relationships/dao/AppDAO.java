@@ -1,5 +1,8 @@
 package com.tidz.relationships.dao;
 
+import java.util.List;
+
+import com.tidz.relationships.entity.Course;
 import com.tidz.relationships.entity.Instructor;
 import com.tidz.relationships.entity.InstructorDetail;
 
@@ -14,4 +17,6 @@ public interface AppDAO {
 	InstructorDetail findInstructorDetailById(int id);
 	
 	void deleteInstructorDetailById(int id);
+	
+	List<Course> findCoursesByInstructorId(int id);
 }
