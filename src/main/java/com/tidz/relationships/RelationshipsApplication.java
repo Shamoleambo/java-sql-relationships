@@ -31,18 +31,36 @@ public class RelationshipsApplication {
 //			findInstructorWithCourses(appDAO);
 //			findCoursesForInstructor(appDAO);
 //			findInstructorWithCoursesJoinFetch(appDAO);
-			updateInstructor(appDAO);
+//			updateInstructor(appDAO);
+			updateCourse(appDAO);
 		};
 	}
-	
+
+	private void updateCourse(AppDAO appDAO) {
+		int id = 10;
+		System.out.println("Where is my course " + id + "?");
+
+		Course course = appDAO.findCourseById(id);
+		System.out.println("Here it is: " + course);
+
+		System.out.println("One update coming up");
+		course.setTitle("MASTER BLASTER 101");
+		appDAO.update(course);
+		System.out.println("Done... not really");
+
+		Instructor instructor = appDAO.findInstructorByIdJoinFetch(1);
+		System.out.println("Check the instructor now my friend: " + instructor);
+		System.out.println("...finally: " + instructor.getCourses());
+	}
+
 	private void updateInstructor(AppDAO appDAO) {
 		int id = 1;
 		System.out.println("Finding instructor id: " + id);
-		
+
 		Instructor instructor = appDAO.findInstructorById(id);
 		System.out.println("New update coming up");
 		instructor.setEmail("superManoTheManForever7575@mail.com");
-		
+
 		appDAO.update(instructor);
 		System.out.println("Done");
 	}
