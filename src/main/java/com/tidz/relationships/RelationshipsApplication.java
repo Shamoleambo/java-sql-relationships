@@ -21,8 +21,18 @@ public class RelationshipsApplication {
 		return runner -> {
 //			createInstructor(appDAO);
 //			findInstructor(appDAO);
-			deleteInstructor(appDAO);
+//			deleteInstructor(appDAO);
+			findInstructorDetail(appDAO);
 		};
+	}
+
+	private void findInstructorDetail(AppDAO appDAO) {
+		int id = 1;
+		System.out.println("Find instructor Detail: " + id);
+
+		InstructorDetail instructorDetail = appDAO.findInstructorDetailById(id);
+		System.out.println("Instructor Detail: " + instructorDetail);
+		System.out.println("Instructor: " + instructorDetail.getInstructor());
 	}
 
 	private void deleteInstructor(AppDAO appDAO) {
