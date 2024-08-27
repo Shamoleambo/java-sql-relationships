@@ -25,8 +25,20 @@ public class RelationshipsApplication {
 //			deleteInstructor(appDAO);
 //			findInstructorDetail(appDAO);
 //			deleteInstructorDetail(appDAO);
-			createInstructorWithCourses(appDAO);
+//			createInstructorWithCourses(appDAO);
+			findInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void findInstructorWithCourses(AppDAO appDAO) {
+		int id = 1;
+		System.out.println("Findind Instructor with id: " + id);
+		Instructor instructor = appDAO.findInstructorById(id);
+
+		System.out.println("Instructor: " + instructor);
+		System.out.println("Courses: " + instructor.getCourses());
+		
+		System.out.println("Done");
 	}
 
 	private void createInstructorWithCourses(AppDAO appDAO) {
