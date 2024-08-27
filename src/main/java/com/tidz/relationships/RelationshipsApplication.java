@@ -26,11 +26,11 @@ public class RelationshipsApplication {
 			deleteInstructorDetail(appDAO);
 		};
 	}
-	
+
 	private void deleteInstructorDetail(AppDAO appDAO) {
-		int id = 1;
+		int id = 5;
 		System.out.println("Deleting the Instructor Detail with id: " + id);
-		
+
 		appDAO.deleteInstructorDetailById(id);
 		System.out.println("Done!");
 	}
@@ -64,14 +64,22 @@ public class RelationshipsApplication {
 	}
 
 	private void createInstructor(AppDAO appDAO) {
-//		Instructor tempInstructor = new Instructor("Mano", "Maneiro", "mano@mail.com");
-//		InstructorDetail instructorDetail = new InstructorDetail("@myMainGoal", "read");
+		Instructor tempInstructor1 = new Instructor("Mano", "Maneiro", "mano@mail.com");
+		InstructorDetail instructorDetail1 = new InstructorDetail("@myMainGoal", "read");
+		Instructor tempInstructor2 = new Instructor("Zinto", "Zaberino", "zz@mail.com");
+		InstructorDetail instructorDetail2 = new InstructorDetail("@theStudent", "study");
 		Instructor tempInstructor = new Instructor("Truta", "Dahora", "truta@mail.com");
 		InstructorDetail instructorDetail = new InstructorDetail("@myMainGoal", "play videogames");
 
+		tempInstructor1.setInstructorDetail(instructorDetail1);
+		System.out.println("Saving instructor: " + tempInstructor1);
+		appDAO.save(tempInstructor1);
 		tempInstructor.setInstructorDetail(instructorDetail);
 		System.out.println("Saving instructor: " + tempInstructor);
 		appDAO.save(tempInstructor);
+		tempInstructor2.setInstructorDetail(instructorDetail2);
+		System.out.println("Saving instructor: " + tempInstructor2);
+		appDAO.save(tempInstructor2);
 
 		System.out.println("DONE!!!");
 
