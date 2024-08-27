@@ -24,7 +24,7 @@ public class RelationshipsApplication {
 		return runner -> {
 //			createInstructor(appDAO);
 //			findInstructor(appDAO);
-			deleteInstructor(appDAO);
+//			deleteInstructor(appDAO);
 //			findInstructorDetail(appDAO);
 //			deleteInstructorDetail(appDAO);
 //			createInstructorWithCourses(appDAO);
@@ -33,7 +33,15 @@ public class RelationshipsApplication {
 //			findInstructorWithCoursesJoinFetch(appDAO);
 //			updateInstructor(appDAO);
 //			updateCourse(appDAO);
+			deleteCourse(appDAO);
 		};
+	}
+
+	private void deleteCourse(AppDAO appDAO) {
+		int id = 13;
+		System.out.println("Deleting a super course " + id);
+		appDAO.deleteCourseById(id);
+		System.out.println("Done :(");
 	}
 
 	private void updateCourse(AppDAO appDAO) {
