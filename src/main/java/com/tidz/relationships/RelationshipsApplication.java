@@ -29,20 +29,32 @@ public class RelationshipsApplication {
 //			deleteInstructorDetail(appDAO);
 //			createInstructorWithCourses(appDAO);
 //			findInstructorWithCourses(appDAO);
-			findCoursesForInstructor(appDAO);
+//			findCoursesForInstructor(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
 	}
-	
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		int id = 1;
+		System.out.println("Finding instructor with id: " + id);
+
+		Instructor instructor = appDAO.findInstructorByIdJoinFetch(id);
+		System.out.println("Instructor: " + instructor);
+		System.out.println("courses: " + instructor.getCourses());
+		System.out.println("Done");
+
+	}
+
 	private void findCoursesForInstructor(AppDAO appDAO) {
 		int id = 1;
 		System.out.println("Findind Instructor with id: " + id);
 		Instructor instructor = appDAO.findInstructorById(id);
 
 		System.out.println("Instructor: " + instructor);
-		
+
 		List<Course> courses = appDAO.findCoursesByInstructorId(id);
 		instructor.setCourses(courses);
-		
+
 		System.out.println("The courses: " + instructor.getCourses());
 	}
 
@@ -53,7 +65,7 @@ public class RelationshipsApplication {
 
 		System.out.println("Instructor: " + instructor);
 		System.out.println("Courses: " + instructor.getCourses());
-		
+
 		System.out.println("Done");
 	}
 
