@@ -36,8 +36,16 @@ public class RelationshipsApplication {
 //			updateCourse(appDAO);
 //			deleteCourse(appDAO);
 //			createCourseAndReviews(appDAO);
-			retrieveCourseAndReviews(appDAO);
+//			retrieveCourseAndReviews(appDAO);
+			deleteCourseAndReviews(appDAO);
 		};
+	}
+	
+	private void deleteCourseAndReviews(AppDAO appDAO) {
+		int id = 10;
+		System.out.println("Deleting the course " + id);
+		appDAO.deleteCourseById(id);
+		System.out.println("Done");
 	}
 
 	private void retrieveCourseAndReviews(AppDAO appDAO) {
