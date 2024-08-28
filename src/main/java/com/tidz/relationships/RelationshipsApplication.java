@@ -12,6 +12,7 @@ import com.tidz.relationships.entity.Course;
 import com.tidz.relationships.entity.Instructor;
 import com.tidz.relationships.entity.InstructorDetail;
 import com.tidz.relationships.entity.Review;
+import com.tidz.relationships.entity.Student;
 
 @SpringBootApplication
 public class RelationshipsApplication {
@@ -23,24 +24,26 @@ public class RelationshipsApplication {
 	@Bean
 	public CommandLineRunner commandLinerunner(AppDAO appDAO) {
 		return runner -> {
-//			createInstructor(appDAO);
-//			findInstructor(appDAO);
-//			deleteInstructor(appDAO);
-//			findInstructorDetail(appDAO);
-//			deleteInstructorDetail(appDAO);
-//			createInstructorWithCourses(appDAO);
-//			findInstructorWithCourses(appDAO);
-//			findCoursesForInstructor(appDAO);
-//			findInstructorWithCoursesJoinFetch(appDAO);
-//			updateInstructor(appDAO);
-//			updateCourse(appDAO);
-//			deleteCourse(appDAO);
-//			createCourseAndReviews(appDAO);
-//			retrieveCourseAndReviews(appDAO);
-			deleteCourseAndReviews(appDAO);
+			createCourseAndStudents(appDAO);
 		};
 	}
-	
+
+	public void createCourseAndStudents(AppDAO appDAO) {
+		Course course1 = new Course("Cat petting");
+
+		Student student1 = new Student("Mano", "Maneiro", "mano@mail.com");
+		Student student2 = new Student("Truta", "Dahora", "truta@mail.com");
+		Student student3 = new Student("Tiu", "Funil", "tiu@mail.com");
+
+		course1.add(student1);
+		course1.add(student2);
+		course1.add(student3);
+
+		System.out.println("Saving the MEGA course!");
+
+		appDAO.save(course1);
+	}
+
 	private void deleteCourseAndReviews(AppDAO appDAO) {
 		int id = 10;
 		System.out.println("Deleting the course " + id);
