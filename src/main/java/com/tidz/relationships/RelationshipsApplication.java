@@ -25,8 +25,23 @@ public class RelationshipsApplication {
 	public CommandLineRunner commandLinerunner(AppDAO appDAO) {
 		return runner -> {
 //			createCourseAndStudents(appDAO);
-			findCourseAndStudents(appDAO);
+//			findCourseAndStudents(appDAO);
+			findStudentAndCourses(appDAO);
 		};
+	}
+
+	public void findStudentAndCourses(AppDAO appDAO) {
+		int id = 1;
+
+		Student student = appDAO.findStudentAndCoursesByStudentId(id);
+		Course course = new Course("How to make stuff");
+		course.add(student);
+		appDAO.save(course);
+
+		System.out.println("Student " + student);
+		System.out.println("Courses: " + student.getCourses());
+
+		System.out.println("Done!");
 	}
 
 	public void findCourseAndStudents(AppDAO appDAO) {
@@ -35,7 +50,7 @@ public class RelationshipsApplication {
 
 		System.out.println("Loaded course: " + course);
 		System.out.println("Students: " + course.getStudents());
-		
+
 		System.out.println("Done!");
 	}
 
