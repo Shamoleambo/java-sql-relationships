@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.tidz.relationships.entity.Course;
 import com.tidz.relationships.entity.Instructor;
 import com.tidz.relationships.entity.InstructorDetail;
+import com.tidz.relationships.entity.Student;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -120,6 +121,14 @@ public class AppDAOImpl implements AppDAO {
 	public Course findCourseAndStudentsByCourseId(int id) {
 		TypedQuery<Course> query = this.entityManager
 				.createQuery("select c FROM Course c " + "JOIN FETCH c.students " + "WHERE c.id = :data", Course.class);
+		query.setParameter("data", id);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public Student findStudentAndCoursesByStudentId(int id) {
+		TypedQuery<Student> query = this.entityManager.createQuery(
+				"SELECT s FROM Student s " + "JOIN FETCH s.courses " + "WHERE s.id = :data", Student.class);
 		query.setParameter("data", id);
 		return query.getSingleResult();
 	}

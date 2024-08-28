@@ -5,6 +5,7 @@ import java.util.List;
 import com.tidz.relationships.entity.Course;
 import com.tidz.relationships.entity.Instructor;
 import com.tidz.relationships.entity.InstructorDetail;
+import com.tidz.relationships.entity.Student;
 
 public interface AppDAO {
 
@@ -35,5 +36,7 @@ public interface AppDAO {
 	Course findCourseAndReviews(int id);
 	
 	Course findCourseAndStudentsByCourseId(int id);
+	
+	Student findStudentAndCoursesByStudentId(int id);
 
 }
