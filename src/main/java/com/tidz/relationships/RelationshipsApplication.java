@@ -26,9 +26,19 @@ public class RelationshipsApplication {
 		return runner -> {
 //			createCourseAndStudents(appDAO);
 //			findCourseAndStudents(appDAO);
-			findStudentAndCourses(appDAO);
+//			findStudentAndCourses(appDAO);
 //			addMoreCoursesForStudent(appDAO);
+			deleteStudent(appDAO);
 		};
+	}
+	
+	public void deleteStudent(AppDAO appDAO) {
+		int id = 3;
+		
+		System.out.println("Delete student " + id);
+		
+		appDAO.deleteStudentById(id);
+		System.out.println("Done");
 	}
 	
 	public void addMoreCoursesForStudent(AppDAO appDAO) {
