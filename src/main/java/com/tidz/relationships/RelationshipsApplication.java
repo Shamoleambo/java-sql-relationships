@@ -27,16 +27,35 @@ public class RelationshipsApplication {
 //			createCourseAndStudents(appDAO);
 //			findCourseAndStudents(appDAO);
 			findStudentAndCourses(appDAO);
+//			addMoreCoursesForStudent(appDAO);
 		};
+	}
+	
+	public void addMoreCoursesForStudent(AppDAO appDAO) {
+		int id = 2;
+		Student student = appDAO.findStudentAndCoursesByStudentId(id);
+		
+		Course course1 = new Course("How to make stuff");
+		Course course2 = new Course("How to make a lot of stuff");
+		
+		student.add(course1);
+		student.add(course2);
+		
+		appDAO.update(student);
+		
+		System.out.println("Saving student: " + student);
+		System.out.println("Here courses: " + student.getCourses());
+		
+		System.out.println("Done");
 	}
 
 	public void findStudentAndCourses(AppDAO appDAO) {
 		int id = 1;
 
 		Student student = appDAO.findStudentAndCoursesByStudentId(id);
-		Course course = new Course("How to make stuff");
-		course.add(student);
-		appDAO.save(course);
+		Course course = new Course("How to make super stuff");
+		student.add(course);
+		appDAO.update(student);
 
 		System.out.println("Student " + student);
 		System.out.println("Courses: " + student.getCourses());
