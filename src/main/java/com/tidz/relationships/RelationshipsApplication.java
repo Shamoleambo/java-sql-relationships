@@ -11,6 +11,7 @@ import com.tidz.relationships.dao.AppDAO;
 import com.tidz.relationships.entity.Course;
 import com.tidz.relationships.entity.Instructor;
 import com.tidz.relationships.entity.InstructorDetail;
+import com.tidz.relationships.entity.Review;
 
 @SpringBootApplication
 public class RelationshipsApplication {
@@ -33,8 +34,25 @@ public class RelationshipsApplication {
 //			findInstructorWithCoursesJoinFetch(appDAO);
 //			updateInstructor(appDAO);
 //			updateCourse(appDAO);
-			deleteCourse(appDAO);
+//			deleteCourse(appDAO);
+			createCourseAndReviews(appDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO appDAO) {
+		Course course = new Course("Le men 101");
+		System.out.println("Saving the course: " + course);
+
+		Review review1 = new Review("soo cool");
+		Review review2 = new Review("lol, lmao even");
+		Review review3 = new Review("first");
+
+		course.add(review1);
+		course.add(review2);
+		course.add(review3);
+
+		appDAO.save(course);
+		System.out.println("Saved?? " + course.getReviews());
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
